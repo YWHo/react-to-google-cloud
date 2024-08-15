@@ -315,3 +315,4 @@ To re-deploy after source update, run the following command (similar to first ti
 ```console
 gcloud run deploy pirate-service --source .
 ```
+
