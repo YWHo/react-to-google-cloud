@@ -34,3 +34,16 @@ After the above step, the local website should be available at: \
 
 ![Browser View 1](./screenshots/browser1.png "Browser View 1")
 
+
+## Update the React Code
+
+Update `src/App.tsx` file to insert following code below `<button>` tag:
+```html
+<p>
+  Ahoy, me hearties!
+</p>
+```
+
+After the above step, the local website should display the changes:
+
+![Browser View 2](./screenshots/browser2.png "Browser View 2")
