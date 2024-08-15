@@ -1,5 +1,7 @@
 # react-to-google-cloud
 
+This is a small project to deploy a React app to the Cloud Run service in Google Cloud
+
 ## Initial Setup
 
 First, create an initial directory for everything inside. In this example, the directory is named as `react-go-google-cloud`
@@ -296,3 +298,20 @@ Service [pirate-service] revision [pirate-service-00001-85f] has been deployed a
 Service URL: https://pirate-service-emv454msza-ts.a.run.app
 ```
 
+When open the website at `https://pirate-service-emv454msza-ts.a.run.app`, you should see the the App has been successfully deployed.
+
+### new deployment after source update
+
+You may want to redo deployment after update the source code.
+
+First, you could check the existing deployment using following command:
+
+```console
+terminal% gcloud run services list
+```
+
+To re-deploy after source update, run the following command (similar to first time deploying):
+
+```console
+gcloud run deploy pirate-service --source .
+```
