@@ -47,3 +47,24 @@ Update `src/App.tsx` file to insert following code below `<button>` tag:
 After the above step, the local website should display the changes:
 
 ![Browser View 2](./screenshots/browser2.png "Browser View 2")
+
+## Build the React App for deployment
+
+In the terminal where the `npm run dev` command is running, press `CTRL-C` to stop the command.
+
+Then run following command to build the App.
+
+```console
+terminal~% npm run build
+```
+
+Please note that 4 files in a `/dist` folder will be generated. Below is the example:
+
+```console
+dist/index.html                   0.46 kB │ gzip:  0.30 kB
+dist/assets/react-CHdo91hT.svg    4.13 kB │ gzip:  2.05 kB
+dist/assets/index-DiwrgTda.css    1.39 kB │ gzip:  0.72 kB
+dist/assets/index-B4DS1gM9.js   143.24 kB │ gzip: 46.08 kB
+```
+
+
