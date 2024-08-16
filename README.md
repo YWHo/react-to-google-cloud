@@ -1,23 +1,23 @@
 # react-to-google-cloud
 
-This is a small project to deploy a React app to the Cloud Run service in Google Cloud
+This is a small project to deploy a React app to the Cloud Run service on Google Cloud.
 
 ## Initial Setup
 
-First, create an initial directory for everything inside. In this example, the directory is named as `react-go-google-cloud`
+First, create an initial directory for everything. In this example, the directory is named `react-go-google-cloud`.
 
 ```console
 terminal% mkdir react-go-google-cloud
 ```
 
-Go into the new directory
+Go into the new directory.
 ```console
 terminal% cd react-go-google-cloud
 ```
 
-## Setup a React App (Client side App)
+## Set Up a React App (Client-side App)
 
-The following steps are used to setup an initial React Application using Vite. The React App is named as `react-app`.
+The following steps are used to set up an initial React application using Vite. The React app is named `react-app`.
 
 ```console
 terminal% npm create vite@latest
@@ -26,54 +26,55 @@ terminal% npm create vite@latest
 ? Select a variant: TypeScript
 ```
 
-Go into the React App directory
+Go into the React app directory.
 
 ```console
 terminal% cd react-app
 ```
 
-Install the dependencies
+Install the dependencies.
 
 ```console
 terminal% npm install
 ```
 
-Run the App locally (in Development mode)
+Run the app locally (in development mode).
 
 ```
 terminal% npm run dev
 ```
 
-After the above step, the local website should be available at: \
-  http://localhost:5173/
+After completing the above steps, the local website should be available at: \
+  `http://localhost:5173/`
 
-![Browser View 1](./screenshots/browser1.png "Browser View 1")
+![Browser View 1](./screenshots/browser1.png "Initial view")
 
 
 ## Update the React Code
 
-Update `src/App.tsx` file to insert following code below `<button>` tag:
+Update the `src/App.tsx` file by inserting the following code below the `<button>` tag:
 ```html
 <p>
   Ahoy, me hearties!
 </p>
 ```
 
-After the above step, the local website should display the changes:
+After completing the above step, the local website should display the changes.
 
-![Browser View 2](./screenshots/browser2.png "Browser View 2")
+![Browser View 2](./screenshots/browser2.png "Updated view")
 
-## Build the React App for deployment
+
+## Build the React App for Deployment
 
 In the terminal where the `npm run dev` command is running, press `CTRL-C` to stop the command.
 
-Then run following command to build the App.
+Then, run the following command to build the app.
 
 ```console
 terminal% npm run build
 ```
 
-Please note that 4 files in a `/dist` directory will be generated. Below is the example:
+Please note that four files will be generated in a `/dist` directory. Below is an example:
 
 ```console
 dist/index.html                   0.46 kB │ gzip:  0.30 kB
@@ -82,26 +83,26 @@ dist/assets/index-DiwrgTda.css    1.39 kB │ gzip:  0.72 kB
 dist/assets/index-B4DS1gM9.js   143.24 kB │ gzip: 46.08 kB
 ```
 
-## Setup an Express app (Server side App)
+## Set Up an Express App (Server-side App)
 
-Go back to the parent directory
+Go back to the parent directory.
 
 ```console
 terminal% cd ..
 ```
 
-Generate the package.json file inside `/react-go-google-cloud` directory
+Generate the `package.json` file inside the `/react-go-google-cloud` directory.
 
 ```console
 terminal% npm init -y
 ```
 
-Install the Express package to allow receiving HTTP request from the React App.
+Install the Express package to handle HTTP requests from the React app.
 ```console
 terminal% npm install express
 ```
 
-Using the VSCode editor, create a new file called `index.js` inside `/react-go-google-cloud` directory. Then, insert following code inside `index.js` file.
+Using the VSCode editor, create a new file called `index.js` inside the `/react-go-google-cloud` directory. Then, insert the following code into the `index.js` file.
 
 ```js
 const express = require('express');
@@ -137,7 +138,7 @@ function  getPirate(id) {
 }
 ```
 
-Then update `scripts` object inside `package.json` file:
+Update the `scripts` object inside the `package.json` file.
 ```js
 {
     ...
@@ -148,85 +149,84 @@ Then update `scripts` object inside `package.json` file:
 }
 ```
 
-Run the `start` command to launch the Express App:
+Run the `start` command to launch the Express app.
 
 ```console
 npm run start
 ```
 
-After the above step, the local website should be available at: \
-  http://localhost:8080/
+After completing the above steps, the local website should be available at: \
+  `http://localhost:8080/`
 
-![Browser View 3](./screenshots/browser3.png "Browser View 3")
+![Browser View 3](./screenshots/browser3.png "localhost:8080")
 
-We can now test the API by going to following URL: \
+You can now test the API by going to the following URL: \
   `http://localhost:8080/api/pirates/3`
 
+The browser will display the following API response:
 
-The browser will show following API response:
-
-![Browser View 4](./screenshots/browser4.png "Browser View 4")
+![Browser View 4](./screenshots/browser4.png "API Response")
 
 or
 
-![Browser View 5](./screenshots/browser5.png "Browser View 5")
+![Browser View 5](./screenshots/browser5.png "API Response (Pretty)")
 
 ## Deploy the App to Google Cloud
 
-### Setup the project in the Google Cloud console
+### Set Up the Project in the Google Cloud Console
 
-First, go to the google cloud server: \
+First, go to the Google Cloud Console. \
   `https://console.cloud.google.com/`
 
-Click the highlighted part to create a new project:
+Click the highlighted part to create a new project.
 
-![Cloud Console View 1](./screenshots/cloud_console1.png "Cloud Console View 1")
+![Cloud Console View 1](./screenshots/cloud_console1.png "New project")
 
-Enter the project name:
+Enter the project name.
 
-![Cloud Console View 2](./screenshots/cloud_console2.png "Cloud Console View 2")
+![Cloud Console View 2](./screenshots/cloud_console2.png "Enter the project name")
 
-At the project settings page, select the billing.
+On the project settings page, select billing.
 
-![Cloud Console View 3](./screenshots/cloud_console3.png "Cloud Console View 3")
+![Cloud Console View 3](./screenshots/cloud_console3.png "Select billing")
 
-If this is a first project, you will need to setup the billing
+If this is your first project, you will need to set up billing.
 
-![Cloud Console View 4](./screenshots/cloud_console4.png "Cloud Console View 4")
+![Cloud Console View 4](./screenshots/cloud_console4.png "Link a billing account")
 
 ### Download the Google Cloud CLI
 
-Run google search in the browser to obtain the instruction to install the gcloud CLI
+Search for "install gcloud" in your browser to obtain the instructions for installing the gcloud CLI.
 
-![Cloud Console View 5](./screenshots/cloud_console5.png "Cloud Console View 5")
+![Cloud Console View 5](./screenshots/cloud_console5.png "Install gcloud CLI")
 
-### gcloud authentication
+### gcloud Authentication
 
-After done with setting up the GCLOUD CLI, go back to the project directory (`react-to-google-cloud`), to run gcloud CLI
+After setting up the GCLOUD CLI, return to the project directory (`react-to-google-cloud`) to run the gcloud CLI.
 
 ```console
 terminal% gcloud auth login
 ```
 
-Then login or select the Google Account to enable the CLI to access your Google Cloud projects.
+Then, log in or select the Google Account to enable the CLI to access your Google Cloud projects.
 
 ### setup current project for gcloud
 
-From the Google Cloud, get the project ID, then run following command (replace `<PROJECT_ID>` with your project ID):
+From Google Cloud, obtain the project ID, then run the following command (replace `<PROJECT_ID>` with your project ID):
 
 ```console
 terminal% gcloud config set project <PROJECT_ID>
 ```
 
-In this case, if the project ID is  `react-pirate-app`, the command will be:
+In this case, if the project ID is `react-pirate-app`, the command will be:
 
 ```console
 terminal% gcloud config set project react-pirate-app
 ```
 
-### gloud command to deploy
+### gcloud Command to Deploy
 
-Then run following command to deploy the service (replace `<service-name>` with the actual name; replace `<source-directory> with the source location`). The same project could run multiple different services.
+Then, run the following command to deploy the service (replace `<service-name>` with the actual name and `<source-directory>` with the source location). The same project can run multiple different services.
 
 ```console
 terminal% gcloud run deploy <service-name> --source <source-directory>
@@ -244,7 +244,7 @@ Example:
 terminal% gcloud run deploy pirate-service --source .
 ```
 
-If certain APIs are not enabled on the project, the following question will be asked:
+If certain APIs are not enabled on the project, you will be prompted with the following question:
 
 ```console
 The following APIs are not enabled on project 
@@ -258,19 +258,19 @@ Do you want enable these APIs to continue (this will take a few minutes)? (Y/n)?
 
 Just press `Y` to continue.
 
-Then wait for awhile when following text is shown
+Then, wait for a while until the following text is shown:
 
 ```console
 Enabling APIs on project [react-pirate-app]...
 ```
 
-When asked to `Please specify a region:`, just select a location that is closest to you and enter the corresponding number.
+When asked to `Please specify a region:`, select the location closest to you and enter the corresponding number.
 
 ```console
 Please enter numeric choice or text value (must exactly match list item): 11
 ```
 
-When asked about the Artifact Registry on the project, just answer `Y` so that you can roll back to the previous deployment.
+When asked about the Artifact Registry in the project, answer `Y` so that you can roll back to the previous deployment.
 
 ```console
 Deploying from source requires an Artifact Registry Docker repository to store built containers. A repository named [cloud-run-source-deploy] in region [australia-southeast1] will be created.
@@ -278,39 +278,39 @@ Deploying from source requires an Artifact Registry Docker repository to store b
 Do you want to continue (Y/n)? 
 ```
 
-The following quest is asking do you allow anonymous access to the service. Press `y` because the app need to allow anonymous access.
+The following question asks whether you allow anonymous access to the service. Press `y` because the app needs to allow anonymous access.
 
 ```console
 Allow unauthenticated invocations to [pirate-service] (y/N)?  
 ```
 
-When the build is running, you will see something like this:
+While the build is running, you will see something like this:
 ```console
 Building using Buildpacks and deploying container to Cloud Run service [pirate-service] in project [react-pirate-app] region [australia-southeast1]
 ```
 
->Note: If for whatever reason, you run into issue the build has error due to missing something, please create a new project to try the above steps again.
+>Note: If, for any reason, you encounter an issue where the build has an error due to something missing, please create a new project and try the steps again.
 
-After finish building, you will see something like this:
+After finishing the build, you will see something like this:
 ```console                                         
 Done.                                                               
 Service [pirate-service] revision [pirate-service-00001-85f] has been deployed and is serving 100 percent of traffic.
 Service URL: https://pirate-service-emv454msza-ts.a.run.app
 ```
 
-When open the website at `https://pirate-service-emv454msza-ts.a.run.app`, you should see the the App has been successfully deployed.
+When you open the website at `https://pirate-service-emv454msza-ts.a.run.app`, you should see that the app has been successfully deployed.
 
 ### new deployment after source update
 
-You may want to redo deployment after update the source code.
+You may want to redo the deployment after updating the source code.
 
-First, you could check the existing deployment using following command:
+First, you can check the existing deployment using the following command:
 
 ```console
 terminal% gcloud run services list
 ```
 
-To re-deploy after source update, run the following command (similar to first time deploying):
+To redeploy after updating the source, run the following command (similar to the first time deploying):
 
 ```console
 gcloud run deploy pirate-service --source .
