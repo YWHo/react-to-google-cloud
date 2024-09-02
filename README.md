@@ -1,6 +1,6 @@
 # react-to-google-cloud
 
-This is a small project to deploy a React app to the Cloud Run service on Google Cloud.
+This is a small project to deploy a React app to the Cloud Run service on Google Cloud. (reference: https://www.youtube.com/watch?v=NMnKGHgw8aM)
 
 ## Initial Setup
 
@@ -335,4 +335,6 @@ To redeploy after updating the source, run the following command (similar to the
 ```console
 gcloud run deploy pirate-service --source .
 ```
+
+> Note: To find out where the app is deployed, please go to the "Dashboard" on the Google Cloud Console website and search for "Cloud Run". From the "Services" section, select and open a service from the list. On the details page, you will find the "URL" of the app.
 
